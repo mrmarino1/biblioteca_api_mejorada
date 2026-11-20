@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Biblioteca - Inicio{% endblock %}
+
+{% block content %}
+
+<div class="card border-0 shadow-sm p-4 p-md-5 text-center">
+    {% if api_activa %}
+    <div class="text-success fs-1 mb-2">
+        <i class="bi bi-check-circle-fill"></i>
+    </div>
+    <h1 class="h3 fw-bold mb-2">Bienvenidos al sistema de biblioteca</h1>
+    <p class="text-secondary mb-4">El sistema y la conexión están funcionando correctamente.</p>
+    <div>
+        <a href="{{ url_for('ver_libros') }}" class="btn btn-primary px-4">
+            <i class="bi bi-journals me-1"></i>Ir a libros
+        </a>
+    </div>
+    {% else %}
+    <div class="text-danger fs-1 mb-2">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+    </div>
+    <h1 class="h3 fw-bold mb-2">El sistema no está disponible</h1>
+    <p class="text-secondary mb-0">No se pudo conectar con la base de datos. Revisa que MySQL esté encendido.</p>
+    {% endif %}
+</div>
+<div class="row g-3 mt-3">
+    <div class="col-6 col-md-3">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <div class="text-secondary small">Total de libros</div>
+                <div id="resumenTotalLibros" class="fs-4 fw-bold">-</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <div class="text-secondary small">Stock disponible</div>
+                <div id="resumenStockTotal" class="fs-4 fw-bold">-</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <div class="text-secondary small">Préstamos pendientes</div>
+                <div id="resumenPrestamosPendientes" class="fs-4 fw-bold text-warning">-</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <div class="text-secondary small">Préstamos devueltos</div>
+                <div id="resumenPrestamosDevueltos" class="fs-4 fw-bold text-success">-</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p id="resumenAvisoInicio" class="text-secondary small mt-3 mb-0"></p>
+
+<div class="card border-0 shadow-sm mt-3">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h2 class="h6 fw-bold mb-0">Últimos préstamos</h2>
+            <a href="/prestamos" class="small text-decoration-none">Ver todos</a>
+        </div>
+        <ul id="listaUltimosPrestamos" class="list-group list-group-flush small">
+            <li class="list-group-item px-0 text-secondary">Cargando...</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

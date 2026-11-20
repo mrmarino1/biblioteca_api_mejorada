@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Biblioteca - Libros{% endblock %}
+{% block ubicacion %}Ver todos los libros{% endblock %}
+
+{% block content %}
+<div class="card border-0 shadow-sm">
+    <div class="card-body">
+        <h1 class="h5 fw-bold mb-3">Listado de libros</h1>
+
+        <div class="mb-3 d-flex gap-2 flex-wrap">
+            <button type="button" class="btn btn-primary btn-sm" onclick="mostrarLibros()">Mostrar todos los
+                libros</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="limpiarLibros()">Limpiar
+                tabla</button>
+        </div>
+
+        <p id="mensajeLibros" class="text-secondary small"></p>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th class="text-center">Portada</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoLibros"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
